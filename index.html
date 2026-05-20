@@ -65,4 +65,437 @@ body {
   color: #fff;
   line-height: 1.25;
   position: relative;
-  letter-spac
+  letter-spacing: -0.5px;
+}
+.hero h1 span { color: var(--sun); display: inline-block; }
+.hero-sub {
+  margin-top: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.78);
+  position: relative;
+  line-height: 1.7;
+}
+.wave {
+  position: absolute;
+  bottom: -2px; left: 0; width: 100%;
+  height: 48px;
+}
+
+.container {
+  max-width: 700px;
+  margin: -20px auto 0;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+.card {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  padding: 32px 28px 36px;
+  box-shadow: var(--shadow), 0 2px 0 rgba(0,180,216,0.15);
+  border: 1.5px solid rgba(255,255,255,0.8);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.section-title .icon { font-size: 20px; }
+
+.item-scroll {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-bottom: 4px;
+}
+.item-card {
+  border-radius: 16px;
+  border: 2.5px solid transparent;
+  background: linear-gradient(145deg, #F0FAFF, #E0F5FF);
+  padding: 16px 10px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  user-select: none;
+}
+.item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,119,182,0.18);
+}
+.item-card.selected {
+  border-color: var(--ocean);
+  background: linear-gradient(145deg, #E0F4FF, #C8EDFF);
+  box-shadow: 0 6px 20px rgba(0,119,182,0.22);
+  transform: translateY(-4px);
+}
+.item-card .check {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 20px; height: 20px;
+  background: var(--ocean);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: #fff;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s;
+}
+.item-card.selected .check { opacity: 1; transform: scale(1); }
+.item-emoji { font-size: 32px; display: block; margin-bottom: 8px; }
+.item-name  { font-size: 12px; font-weight: 700; color: var(--dark); line-height: 1.35; }
+.item-num   { font-size: 10px; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
+
+.multi-tip { font-size: 11px; color: var(--muted); margin-top: 8px; text-align: right; }
+
+.divider { border: none; border-top: 1.5px dashed #C9E8F4; margin: 26px 0; }
+
+.field-group { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label {
+  font-size: 13px; font-weight: 700; color: var(--dark);
+  display: flex; align-items: center; gap: 6px;
+}
+.field label .licon { font-size: 16px; }
+.field input {
+  width: 100%; padding: 13px 16px;
+  border: 2px solid #D6EEF8; border-radius: 12px;
+  font-size: 15px; font-family: 'Noto Sans KR', sans-serif;
+  color: var(--text); background: #F7FBFF; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.field input::placeholder { color: #B0CCDA; }
+.field input:focus {
+  border-color: var(--sky); background: #fff;
+  box-shadow: 0 0 0 4px rgba(0,180,216,0.12);
+}
+.field input.error { border-color: var(--coral); background: #FFF5F5; }
+
+.insta-prefix { position: relative; }
+.insta-prefix input { padding-left: 42px; }
+.insta-prefix::before {
+  content: '@'; position: absolute; left: 15px; top: 50%;
+  transform: translateY(-50%); font-size: 15px; font-weight: 700;
+  color: var(--muted); pointer-events: none;
+}
+
+.submit-btn {
+  width: 100%; margin-top: 28px; padding: 17px; border: none;
+  border-radius: 16px; background: linear-gradient(135deg, #0077B6, #00B4D8);
+  color: #fff; font-size: 16px; font-weight: 800;
+  font-family: 'Noto Sans KR', sans-serif; cursor: pointer;
+  letter-spacing: 0.3px; transition: all 0.22s;
+  box-shadow: 0 6px 20px rgba(0,119,182,0.35);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,119,182,0.45); }
+.submit-btn:active { transform: translateY(0); }
+.submit-btn:disabled { background: #B0CCDA; box-shadow: none; cursor: not-allowed; transform: none; }
+
+.success-screen {
+  display: none; text-align: center; padding: 20px 0 10px;
+  animation: popIn 0.5s cubic-bezier(.4,0,.2,1);
+}
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.85); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.success-screen.show { display: block; }
+.success-emoji { font-size: 64px; display: block; margin-bottom: 16px; }
+.success-screen h2 { font-size: 22px; font-weight: 900; color: var(--dark); margin-bottom: 10px; }
+.success-screen p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+.success-summary {
+  background: linear-gradient(145deg, #E8F7FF, #D0EFFF);
+  border-radius: 14px; padding: 16px 20px; margin: 20px 0 0;
+  text-align: left; font-size: 13px; color: var(--dark); line-height: 2;
+  border: 1.5px solid rgba(0,180,216,0.2);
+}
+.success-summary strong { color: var(--ocean); }
+
+.selected-badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--ocean); color: #fff; font-size: 11px; font-weight: 700;
+  padding: 3px 9px; border-radius: 20px; margin-left: 6px;
+}
+
+.err-msg { font-size: 11px; color: var(--coral); font-weight: 600; display: none; }
+.err-msg.show { display: block; }
+
+.footer {
+  text-align: center; margin-top: 24px; font-size: 12px;
+  color: rgba(2,62,92,0.55); font-weight: 600; letter-spacing: 0.5px;
+}
+
+.qty-row { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+.qty-btn {
+  width: 38px; height: 38px; border-radius: 10px;
+  border: 2px solid #D6EEF8; background: #F7FBFF;
+  font-size: 20px; font-weight: 700; color: var(--ocean);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; user-select: none; flex-shrink: 0;
+}
+.qty-btn:hover { background: #E0F4FF; border-color: var(--sky); }
+.qty-input {
+  width: 72px; height: 38px; border: 2px solid #D6EEF8; border-radius: 10px;
+  background: #F7FBFF; font-size: 17px; font-weight: 800; color: var(--dark);
+  text-align: center; font-family: 'Noto Sans KR', sans-serif; outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.qty-input:focus {
+  border-color: var(--sky); background: #fff;
+  box-shadow: 0 0 0 4px rgba(0,180,216,0.12);
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-emoji">🏖️</span>
+  <h1>7일간의 휴가<br><span>여름 공동구매</span></h1>
+  <p class="hero-sub">원하는 아이템을 선택하고<br>정보를 입력해 주세요 ☀️</p>
+  <svg class="wave" viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,24 C360,48 1080,0 1440,24 L1440,48 L0,48 Z" fill="#CAF0F8"/>
+  </svg>
+</div>
+
+<div class="container">
+  <div class="card" id="formCard">
+    <div id="mainForm">
+
+      <div class="section-label">STEP 1</div>
+      <div class="section-title">
+        <span class="icon">🛒</span>
+        구매할 아이템을 선택해 주세요
+        <span class="selected-badge" id="selCount" style="display:none">0</span>
+      </div>
+
+      <div class="item-scroll" id="itemScroll">
+        <div class="item-card" data-id="1" onclick="toggleItem(this)">
+          <div class="check">✓</div>
+          <span class="item-emoji">🤿</span>
+          <div class="item-num">No.1</div>
+          <div class="item-name">스노클 세트</div>
+        </div>
+        <div class="item-card" data-id="2" onclick="toggleItem(this)">
+          <div class="check">✓</div>
+          <span class="item-emoji">🏖️</span>
+          <div class="item-num">No.2</div>
+          <div class="item-name">비치 타월</div>
+        </div>
+        <div class="item-card" data-id="3" onclick="toggleItem(this)">
+          <div class="check">✓</div>
+          <span class="item-emoji">👟</span>
+          <div class="item-num">No.3</div>
+          <div class="item-name">아쿠아슈즈</div>
+        </div>
+        <div class="item-card" data-id="4" onclick="toggleItem(this)">
+          <div class="check">✓</div>
+          <span class="item-emoji">✈️</span>
+          <div class="item-num">No.4</div>
+          <div class="item-name">비행기 거치대<br>3종 세트</div>
+        </div>
+      </div>
+      <div class="multi-tip">복수 선택 가능</div>
+      <div class="err-msg" id="errItem">⚠ 아이템을 1개 이상 선택해 주세요</div>
+
+      <hr class="divider">
+
+      <div class="section-label">STEP 2</div>
+      <div class="section-title"><span class="icon">🔢</span> 수량</div>
+      <div class="qty-row">
+        <button class="qty-btn" onclick="changeQty(-1)">−</button>
+        <input class="qty-input" type="number" id="qtyVal" value="1" min="1" max="999"
+               oninput="syncQty(this)" onfocus="this.select()">
+        <button class="qty-btn" onclick="changeQty(1)">+</button>
+        <span style="font-size:13px;color:var(--muted);font-weight:600;">개</span>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section-label">STEP 3</div>
+      <div class="section-title"><span class="icon">📋</span> 참여자 정보</div>
+
+      <div class="field-group">
+        <div class="field">
+          <label><span class="licon">👤</span> 이름</label>
+          <input type="text" id="inputName" placeholder="이름을 입력해 주세요" maxlength="20"
+                 oninput="clearErr('errName', this)">
+          <div class="err-msg" id="errName">⚠ 이름을 입력해 주세요</div>
+        </div>
+        <div class="field">
+          <label><span class="licon">📱</span> 연락처</label>
+          <input type="tel" id="inputPhone" placeholder="010-0000-0000" maxlength="13"
+                 oninput="formatPhone(this); clearErr('errPhone', this)">
+          <div class="err-msg" id="errPhone">⚠ 연락처를 입력해 주세요</div>
+        </div>
+        <div class="field">
+          <label><span class="licon">📸</span> 인스타그램 아이디</label>
+          <div class="insta-prefix">
+            <input type="text" id="inputInsta" placeholder="instagram_id" maxlength="30"
+                   oninput="cleanInsta(this); clearErr('errInsta', this)">
+          </div>
+          <div class="err-msg" id="errInsta">⚠ 인스타그램 아이디를 입력해 주세요</div>
+        </div>
+      </div>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitForm()">
+        🌊 공구 참여하기
+      </button>
+    </div>
+
+    <div class="success-screen" id="successScreen">
+      <span class="success-emoji">🎉</span>
+      <h2>참여 완료!</h2>
+      <p>공구 참여 신청이 접수되었어요.<br>인스타그램 DM으로 안내드릴게요 ☀️</p>
+      <div class="success-summary" id="summaryBox"></div>
+    </div>
+  </div>
+
+  <div class="footer">7일간의 휴가 ☀️ 7v.co.kr</div>
+</div>
+
+<script>
+const selectedItems = new Set();
+let qty = 1;
+
+const ITEMS = {
+  1: '🤿 스노클 세트',
+  2: '🏖️ 비치 타월',
+  3: '👟 아쿠아슈즈',
+  4: '✈️ 비행기 거치대 3종 세트',
+};
+
+function toggleItem(el) {
+  const id = el.dataset.id;
+  if (selectedItems.has(id)) {
+    selectedItems.delete(id);
+    el.classList.remove('selected');
+  } else {
+    selectedItems.add(id);
+    el.classList.add('selected');
+  }
+  const badge = document.getElementById('selCount');
+  if (selectedItems.size > 0) {
+    badge.style.display = 'inline-flex';
+    badge.textContent = selectedItems.size;
+  } else {
+    badge.style.display = 'none';
+  }
+  clearErr('errItem');
+}
+
+function changeQty(delta) {
+  const input = document.getElementById('qtyVal');
+  qty = Math.max(1, Math.min(999, (parseInt(input.value) || 1) + delta));
+  input.value = qty;
+}
+function syncQty(input) {
+  const v = parseInt(input.value);
+  qty = isNaN(v) || v < 1 ? 1 : Math.min(999, v);
+  if (input.value !== '' && v < 1) input.value = 1;
+}
+
+function formatPhone(input) {
+  let v = input.value.replace(/\D/g, '');
+  if (v.length <= 3) input.value = v;
+  else if (v.length <= 7) input.value = v.slice(0,3) + '-' + v.slice(3);
+  else input.value = v.slice(0,3) + '-' + v.slice(3,7) + '-' + v.slice(7,11);
+}
+
+function cleanInsta(input) {
+  input.value = input.value.replace(/^@+/, '').replace(/\s/g, '');
+}
+
+function clearErr(id, input) {
+  document.getElementById(id).classList.remove('show');
+  if (input) input.classList.remove('error');
+}
+
+function validate() {
+  let ok = true;
+  if (selectedItems.size === 0) {
+    document.getElementById('errItem').classList.add('show');
+    document.getElementById('itemScroll').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    ok = false;
+  }
+  const name  = document.getElementById('inputName').value.trim();
+  const phone = document.getElementById('inputPhone').value.trim();
+  const insta = document.getElementById('inputInsta').value.trim();
+  if (!name)  { showErr('errName',  'inputName');  ok = false; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) {
+    showErr('errPhone', 'inputPhone'); ok = false;
+  }
+  if (!insta) { showErr('errInsta', 'inputInsta'); ok = false; }
+  return ok;
+}
+function showErr(errId, inputId) {
+  document.getElementById(errId).classList.add('show');
+  const el = document.getElementById(inputId);
+  el.classList.add('error');
+  el.focus();
+}
+
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxs-HQApk8buv_xsFM5uUQdwMXHBUaXKasj3ITDFINLfGJo06BW8VvX3xW3Qp2FNSBt/exec';
+
+async function submitForm() {
+  if (!validate()) return;
+
+  const name   = document.getElementById('inputName').value.trim();
+  const phone  = document.getElementById('inputPhone').value.trim();
+  const insta  = document.getElementById('inputInsta').value.trim();
+  const items  = [...selectedItems].sort().map(id => ITEMS[id]).join(', ');
+  const qtyVal = document.getElementById('qtyVal').value || qty;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '⏳ 제출 중...';
+
+  const params = new URLSearchParams({ name, phone, insta: '@' + insta, items, qty: qtyVal });
+
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
+    });
+    showSuccess(name, phone, insta, items, qtyVal);
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    btn.innerHTML = '🌊 공구 참여하기';
+    alert('전송 중 오류가 발생했어요. 잠시 후 다시 시도해 주세요.');
+  }
+}
+
+function showSuccess(name, phone, insta, items, qtyVal) {
+  document.getElementById('mainForm').style.display = 'none';
+  const success = document.getElementById('successScreen');
+  success.classList.add('show');
+  document.getElementById('summaryBox').innerHTML = `
+    <strong>아이템</strong>  ${items}<br>
+    <strong>수 량</strong>    ${qtyVal}개<br>
+    <strong>이 름</strong>    ${name}<br>
+    <strong>연락처</strong>  ${phone}<br>
+    <strong>인스타</strong>  @${insta}
+  `;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+</body>
+</html>
