@@ -6,395 +6,107 @@
 <title>7일간의 휴가 🏖️ 공동구매 참여</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
-
 <style>
 :root {
-  --ocean:   #0077B6;
-  --sky:     #00B4D8;
-  --foam:    #90E0EF;
-  --sand:    #FFF3E0;
-  --sand2:   #FFE0B2;
-  --coral:   #FF6B6B;
-  --sun:     #FFD166;
-  --white:   #FFFFFF;
-  --dark:    #023E5C;
-  --text:    #1A3A4A;
-  --muted:   #7AA8BC;
-  --radius:  18px;
-  --shadow:  0 8px 32px rgba(0,119,182,0.13);
+  --ocean:#0077B6; --sky:#00B4D8; --coral:#FF6B6B; --sun:#FFD166;
+  --dark:#023E5C; --text:#1A3A4A; --muted:#7AA8BC;
+  --shadow:0 8px 32px rgba(0,119,182,0.13);
 }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(160deg,#CAF0F8 0%,#ADE8F4 30%,#90E0EF 60%,#48CAE4 100%);min-height:100vh;padding:0 0 60px;overflow-x:hidden;}
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* 히어로 */
+.hero{position:relative;background:linear-gradient(135deg,#023E5C 0%,#0077B6 50%,#00B4D8 100%);padding:48px 20px 80px;text-align:center;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(255,209,102,.18) 0%,transparent 60%),radial-gradient(ellipse at 20% 80%,rgba(0,180,216,.25) 0%,transparent 50%);}
+.hero-emoji{font-size:52px;display:block;margin-bottom:10px;animation:float 3s ease-in-out infinite;position:relative;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.hero h1{font-family:'Nunito','Noto Sans KR',sans-serif;font-size:clamp(22px,5vw,34px);font-weight:900;color:#fff;line-height:1.25;position:relative;}
+.hero h1 span{color:var(--sun);}
+.hero-sub{margin-top:10px;font-size:14px;color:rgba(255,255,255,.78);position:relative;line-height:1.7;}
+.wave{position:absolute;bottom:-2px;left:0;width:100%;height:48px;}
 
-body {
-  font-family: 'Noto Sans KR', sans-serif;
-  background: linear-gradient(160deg, #CAF0F8 0%, #ADE8F4 30%, #90E0EF 60%, #48CAE4 100%);
-  min-height: 100vh;
-  padding: 0 0 60px;
-  overflow-x: hidden;
-}
+/* 안내사항 배너 */
+.notice-banner{background:rgba(255,255,255,0.95);border-radius:16px;padding:20px 22px;margin:16px 0 0;border-left:4px solid var(--ocean);box-shadow:0 4px 16px rgba(0,119,182,0.1);}
+.notice-title{font-size:13px;font-weight:800;color:var(--ocean);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.notice-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.notice-list li{font-size:12.5px;color:var(--text);line-height:1.6;display:flex;gap:8px;align-items:flex-start;}
+.notice-list li::before{content:'•';color:var(--ocean);font-weight:900;flex-shrink:0;margin-top:1px;}
+.notice-list a{color:var(--ocean);font-weight:700;text-decoration:underline;}
 
-/* ── 웨이브 헤더 ─────────────────────────────── */
-.hero {
-  position: relative;
-  background: linear-gradient(135deg, #023E5C 0%, #0077B6 50%, #00B4D8 100%);
-  padding: 48px 20px 80px;
-  text-align: center;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse at 70% 30%, rgba(255,209,102,0.18) 0%, transparent 60%),
-              radial-gradient(ellipse at 20% 80%, rgba(0,180,216,0.25) 0%, transparent 50%);
-}
-.hero-emoji {
-  font-size: 52px;
-  display: block;
-  margin-bottom: 10px;
-  animation: float 3s ease-in-out infinite;
-  position: relative;
-}
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50%      { transform: translateY(-10px); }
-}
-.hero h1 {
-  font-family: 'Nunito', 'Noto Sans KR', sans-serif;
-  font-size: clamp(22px, 5vw, 34px);
-  font-weight: 900;
-  color: #fff;
-  line-height: 1.25;
-  position: relative;
-  letter-spacing: -0.5px;
-}
-.hero h1 span {
-  color: var(--sun);
-  display: inline-block;
-}
-.hero-sub {
-  margin-top: 10px;
-  font-size: 14px;
-  color: rgba(255,255,255,0.78);
-  position: relative;
-  line-height: 1.7;
-}
-.wave {
-  position: absolute;
-  bottom: -2px; left: 0; width: 100%;
-  height: 48px;
-}
+/* 컨테이너 */
+.container{max-width:700px;margin:-20px auto 0;padding:0 20px;position:relative;z-index:2;}
+.card{background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-radius:24px;padding:32px 28px 36px;box-shadow:var(--shadow),0 2px 0 rgba(0,180,216,.15);border:1.5px solid rgba(255,255,255,.8);}
 
-/* ── 메인 카드 ───────────────────────────────── */
-.container {
-  max-width: 700px;
-  margin: -20px auto 0;
-  padding: 0 20px;
-  position: relative;
-  z-index: 2;
-}
+.section-label{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;}
+.section-title{font-size:16px;font-weight:700;color:var(--dark);margin-bottom:14px;display:flex;align-items:center;gap:7px;}
 
-.card {
-  background: rgba(255,255,255,0.92);
-  backdrop-filter: blur(12px);
-  border-radius: 24px;
-  padding: 32px 28px 36px;
-  box-shadow: var(--shadow), 0 2px 0 rgba(0,180,216,0.15);
-  border: 1.5px solid rgba(255,255,255,0.8);
-}
+/* 아이템 카드 */
+.item-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.item-card{border-radius:16px;border:2.5px solid transparent;background:linear-gradient(145deg,#F0FAFF,#E0F5FF);padding:14px 8px 12px;text-align:center;cursor:pointer;transition:all .22s cubic-bezier(.4,0,.2,1);position:relative;user-select:none;}
+.item-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,119,182,.18);}
+.item-card.selected{border-color:var(--ocean);background:linear-gradient(145deg,#E0F4FF,#C8EDFF);box-shadow:0 6px 20px rgba(0,119,182,.22);transform:translateY(-4px);}
+.item-card .check{position:absolute;top:7px;right:7px;width:18px;height:18px;background:var(--ocean);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;opacity:0;transform:scale(.5);transition:all .2s;}
+.item-card.selected .check{opacity:1;transform:scale(1);}
+.item-emoji{font-size:28px;display:block;margin-bottom:6px;}
+.item-name{font-size:11px;font-weight:700;color:var(--dark);line-height:1.35;margin-bottom:6px;}
+.item-num{font-size:10px;color:var(--muted);margin-bottom:4px;font-weight:600;}
 
-/* ── 아이템 선택 ─────────────────────────────── */
-.section-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.section-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-.section-title .icon { font-size: 20px; }
+/* 아이템별 수량 */
+.item-qty{display:none;align-items:center;justify-content:center;gap:6px;margin-top:8px;}
+.item-card.selected .item-qty{display:flex;}
+.iq-btn{width:24px;height:24px;border-radius:7px;border:1.5px solid #A8D8EE;background:#fff;font-size:15px;font-weight:700;color:var(--ocean);cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .15s;flex-shrink:0;}
+.iq-btn:hover{background:#D0EFFF;}
+.iq-input{width:36px;height:24px;border:1.5px solid #A8D8EE;border-radius:7px;background:#fff;font-size:13px;font-weight:800;color:var(--dark);text-align:center;font-family:'Noto Sans KR',sans-serif;outline:none;}
+.iq-input:focus{border-color:var(--sky);}
 
-.item-scroll {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  padding-bottom: 4px;
-}
+.multi-tip{font-size:11px;color:var(--muted);margin-top:8px;text-align:right;}
+.divider{border:none;border-top:1.5px dashed #C9E8F4;margin:26px 0;}
 
-.item-card {
-  border-radius: 16px;
-  border: 2.5px solid transparent;
-  background: linear-gradient(145deg, #F0FAFF, #E0F5FF);
-  padding: 16px 10px 14px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.22s cubic-bezier(.4,0,.2,1);
-  position: relative;
-  user-select: none;
-}
-.item-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0,119,182,0.18);
-}
-.item-card.selected {
-  border-color: var(--ocean);
-  background: linear-gradient(145deg, #E0F4FF, #C8EDFF);
-  box-shadow: 0 6px 20px rgba(0,119,182,0.22);
-  transform: translateY(-4px);
-}
-.item-card .check {
-  position: absolute;
-  top: 8px; right: 8px;
-  width: 20px; height: 20px;
-  background: var(--ocean);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 11px; color: #fff;
-  opacity: 0;
-  transform: scale(0.5);
-  transition: all 0.2s;
-}
-.item-card.selected .check {
-  opacity: 1;
-  transform: scale(1);
-}
-.item-emoji { font-size: 32px; display: block; margin-bottom: 8px; }
-.item-name  {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--dark);
-  line-height: 1.35;
-}
-.item-num {
-  font-size: 10px;
-  color: var(--muted);
-  margin-bottom: 4px;
-  font-weight: 600;
-}
+/* 필드 */
+.field-group{display:flex;flex-direction:column;gap:16px;}
+.field{display:flex;flex-direction:column;gap:6px;}
+.field label{font-size:13px;font-weight:700;color:var(--dark);display:flex;align-items:center;gap:6px;}
+.field input{width:100%;padding:13px 16px;border:2px solid #D6EEF8;border-radius:12px;font-size:15px;font-family:'Noto Sans KR',sans-serif;color:var(--text);background:#F7FBFF;outline:none;transition:border-color .2s,box-shadow .2s,background .2s;}
+.field input::placeholder{color:#B0CCDA;}
+.field input:focus{border-color:var(--sky);background:#fff;box-shadow:0 0 0 4px rgba(0,180,216,.12);}
+.field input.error{border-color:var(--coral);background:#FFF5F5;}
+.field-hint{font-size:11px;color:var(--muted);margin-top:2px;line-height:1.5;}
+.field-hint.error-hint{color:var(--coral);}
 
-/* 다중선택 안내 */
-.multi-tip {
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 8px;
-  text-align: right;
-}
+.insta-prefix{position:relative;}
+.insta-prefix input{padding-left:42px;}
+.insta-prefix::before{content:'@';position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:700;color:var(--muted);pointer-events:none;}
 
-/* ── 구분선 ──────────────────────────────────── */
-.divider {
-  border: none;
-  border-top: 1.5px dashed #C9E8F4;
-  margin: 26px 0;
-}
+/* 아이디 유효성 색상 */
+.id-valid{border-color:#2ECC71 !important;background:#F0FFF4 !important;}
+.id-invalid{border-color:var(--coral) !important;background:#FFF5F5 !important;}
 
-/* ── 입력 필드 ───────────────────────────────── */
-.field-group { display: flex; flex-direction: column; gap: 16px; }
+/* 에러 */
+.err-msg{font-size:11px;color:var(--coral);font-weight:600;display:none;}
+.err-msg.show{display:block;}
+.selected-badge{display:inline-flex;align-items:center;background:var(--ocean);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-left:6px;}
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.field label {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--dark);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.field label .licon { font-size: 16px; }
+/* 제출 버튼 */
+.submit-btn{width:100%;margin-top:28px;padding:17px;border:none;border-radius:16px;background:linear-gradient(135deg,#0077B6,#00B4D8);color:#fff;font-size:16px;font-weight:800;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .22s;box-shadow:0 6px 20px rgba(0,119,182,.35);display:flex;align-items:center;justify-content:center;gap:8px;}
+.submit-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,119,182,.45);}
+.submit-btn:active{transform:translateY(0);}
+.submit-btn:disabled{background:#B0CCDA;box-shadow:none;cursor:not-allowed;transform:none;}
 
-.field input {
-  width: 100%;
-  padding: 13px 16px;
-  border: 2px solid #D6EEF8;
-  border-radius: 12px;
-  font-size: 15px;
-  font-family: 'Noto Sans KR', sans-serif;
-  color: var(--text);
-  background: #F7FBFF;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-}
-.field input::placeholder { color: #B0CCDA; }
-.field input:focus {
-  border-color: var(--sky);
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(0,180,216,0.12);
-}
-.field input.error { border-color: var(--coral); background: #FFF5F5; }
+/* 성공 화면 */
+.success-screen{display:none;text-align:center;padding:20px 0 10px;}
+.success-screen.show{display:block;animation:popIn .5s cubic-bezier(.4,0,.2,1);}
+@keyframes popIn{0%{opacity:0;transform:scale(.85)}100%{opacity:1;transform:scale(1)}}
+.success-emoji{font-size:64px;display:block;margin-bottom:16px;}
+.success-screen h2{font-size:22px;font-weight:900;color:var(--dark);margin-bottom:10px;}
+.success-screen p{font-size:14px;color:var(--muted);line-height:1.7;}
+.success-summary{background:linear-gradient(145deg,#E8F7FF,#D0EFFF);border-radius:14px;padding:16px 20px;margin:20px 0 0;text-align:left;font-size:13px;color:var(--dark);line-height:2;border:1.5px solid rgba(0,180,216,.2);}
+.success-summary strong{color:var(--ocean);}
 
-.insta-prefix {
-  position: relative;
-}
-.insta-prefix input { padding-left: 42px; }
-.insta-prefix::before {
-  content: '@';
-  position: absolute;
-  left: 15px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--muted);
-  pointer-events: none;
-}
-
-/* ── 제출 버튼 ───────────────────────────────── */
-.submit-btn {
-  width: 100%;
-  margin-top: 28px;
-  padding: 17px;
-  border: none;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #0077B6, #00B4D8);
-  color: #fff;
-  font-size: 16px;
-  font-weight: 800;
-  font-family: 'Noto Sans KR', sans-serif;
-  cursor: pointer;
-  letter-spacing: 0.3px;
-  transition: all 0.22s;
-  box-shadow: 0 6px 20px rgba(0,119,182,0.35);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.submit-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(0,119,182,0.45);
-}
-.submit-btn:active { transform: translateY(0); }
-.submit-btn:disabled {
-  background: #B0CCDA;
-  box-shadow: none;
-  cursor: not-allowed;
-  transform: none;
-}
-
-/* ── 성공 화면 ───────────────────────────────── */
-.success-screen {
-  display: none;
-  text-align: center;
-  padding: 20px 0 10px;
-  animation: popIn 0.5s cubic-bezier(.4,0,.2,1);
-}
-@keyframes popIn {
-  0%   { opacity: 0; transform: scale(0.85); }
-  100% { opacity: 1; transform: scale(1); }
-}
-.success-screen.show { display: block; }
-.success-emoji { font-size: 64px; display: block; margin-bottom: 16px; }
-.success-screen h2 {
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--dark);
-  margin-bottom: 10px;
-}
-.success-screen p { font-size: 14px; color: var(--muted); line-height: 1.7; }
-.success-summary {
-  background: linear-gradient(145deg, #E8F7FF, #D0EFFF);
-  border-radius: 14px;
-  padding: 16px 20px;
-  margin: 20px 0 0;
-  text-align: left;
-  font-size: 13px;
-  color: var(--dark);
-  line-height: 2;
-  border: 1.5px solid rgba(0,180,216,0.2);
-}
-.success-summary strong { color: var(--ocean); }
-
-/* ── 선택 항목 표시 배지 ─────────────────────── */
-.selected-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: var(--ocean);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 3px 9px;
-  border-radius: 20px;
-  margin-left: 6px;
-}
-
-/* ── 에러 메시지 ─────────────────────────────── */
-.err-msg {
-  font-size: 11px;
-  color: var(--coral);
-  font-weight: 600;
-  display: none;
-}
-.err-msg.show { display: block; }
-
-/* ── 하단 로고 ───────────────────────────────── */
-.footer {
-  text-align: center;
-  margin-top: 24px;
-  font-size: 12px;
-  color: rgba(2,62,92,0.55);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-}
-
-/* ── 수량 선택 ───────────────────────────────── */
-.qty-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 4px;
-}
-.qty-btn {
-  width: 38px; height: 38px;
-  border-radius: 10px;
-  border: 2px solid #D6EEF8;
-  background: #F7FBFF;
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--ocean);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: all 0.15s;
-  user-select: none;
-  flex-shrink: 0;
-}
-.qty-btn:hover { background: #E0F4FF; border-color: var(--sky); }
-.qty-input {
-  width: 72px;
-  height: 38px;
-  border: 2px solid #D6EEF8;
-  border-radius: 10px;
-  background: #F7FBFF;
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--dark);
-  text-align: center;
-  font-family: 'Noto Sans KR', sans-serif;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.qty-input:focus {
-  border-color: var(--sky);
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(0,180,216,0.12);
-}
+.footer{text-align:center;margin-top:24px;font-size:12px;color:rgba(2,62,92,.55);font-weight:600;}
 </style>
 </head>
 <body>
 
-<!-- 히어로 헤더 -->
 <div class="hero">
   <span class="hero-emoji">🏖️</span>
   <h1>7일간의 휴가<br><span>여름 공동구매</span></h1>
@@ -405,105 +117,146 @@ body {
 </div>
 
 <div class="container">
-  <div class="card" id="formCard">
 
-    <!-- 폼 메인 -->
+  <!-- 안내사항 -->
+  <div class="notice-banner">
+    <div class="notice-title">📢 공구 참여 안내사항</div>
+    <ul class="notice-list">
+      <li>대문자 / 공백 / 특수문자가 포함되었거나, 숫자로 시작 또는 숫자로만 이루어진 아이디는 사용할 수 없습니다.</li>
+      <li>해당 공구 이벤트는 샘플이 제공되지 않습니다.</li>
+      <li>사이트 <a href="http://7v.co.kr" target="_blank">7v.co.kr</a> 가입 후 신청 완료 시, 일괄 <strong>30% 할인</strong> 적용됩니다.</li>
+      <li>각 참여자에게 문자 발송 후 확인되면, 할인된 금액으로 주문하실 수 있습니다.</li>
+    </ul>
+  </div>
+
+  <div class="card" style="margin-top:16px;">
     <div id="mainForm">
 
-      <!-- 아이템 선택 -->
+      <!-- STEP 1 아이템 -->
       <div class="section-label">STEP 1</div>
       <div class="section-title">
-        <span class="icon">🛒</span>
-        구매할 아이템을 선택해 주세요
+        🛒 구매할 아이템을 선택해 주세요
         <span class="selected-badge" id="selCount" style="display:none">0</span>
       </div>
 
-      <div class="item-scroll" id="itemScroll">
+      <div class="item-grid" id="itemScroll">
         <div class="item-card" data-id="1" onclick="toggleItem(this)">
           <div class="check">✓</div>
           <span class="item-emoji">🤿</span>
           <div class="item-num">No.1</div>
           <div class="item-name">스노클 세트</div>
+          <div class="item-qty">
+            <button class="iq-btn" onclick="iqChange(event,this,-1)">−</button>
+            <input class="iq-input" type="number" value="1" min="1" max="99"
+                   onfocus="this.select()" oninput="iqInput(this)" onclick="event.stopPropagation()">
+            <button class="iq-btn" onclick="iqChange(event,this,1)">+</button>
+          </div>
         </div>
         <div class="item-card" data-id="2" onclick="toggleItem(this)">
           <div class="check">✓</div>
           <span class="item-emoji">🏖️</span>
           <div class="item-num">No.2</div>
           <div class="item-name">비치 타월</div>
+          <div class="item-qty">
+            <button class="iq-btn" onclick="iqChange(event,this,-1)">−</button>
+            <input class="iq-input" type="number" value="1" min="1" max="99"
+                   onfocus="this.select()" oninput="iqInput(this)" onclick="event.stopPropagation()">
+            <button class="iq-btn" onclick="iqChange(event,this,1)">+</button>
+          </div>
         </div>
         <div class="item-card" data-id="3" onclick="toggleItem(this)">
           <div class="check">✓</div>
           <span class="item-emoji">👟</span>
           <div class="item-num">No.3</div>
           <div class="item-name">아쿠아슈즈</div>
+          <div class="item-qty">
+            <button class="iq-btn" onclick="iqChange(event,this,-1)">−</button>
+            <input class="iq-input" type="number" value="1" min="1" max="99"
+                   onfocus="this.select()" oninput="iqInput(this)" onclick="event.stopPropagation()">
+            <button class="iq-btn" onclick="iqChange(event,this,1)">+</button>
+          </div>
         </div>
         <div class="item-card" data-id="4" onclick="toggleItem(this)">
           <div class="check">✓</div>
           <span class="item-emoji">✈️</span>
           <div class="item-num">No.4</div>
           <div class="item-name">비행기 거치대<br>3종 세트</div>
+          <div class="item-qty">
+            <button class="iq-btn" onclick="iqChange(event,this,-1)">−</button>
+            <input class="iq-input" type="number" value="1" min="1" max="99"
+                   onfocus="this.select()" oninput="iqInput(this)" onclick="event.stopPropagation()">
+            <button class="iq-btn" onclick="iqChange(event,this,1)">+</button>
+          </div>
         </div>
         <div class="item-card" data-id="5" onclick="toggleItem(this)">
           <div class="check">✓</div>
           <span class="item-emoji">👙</span>
           <div class="item-num">No.5</div>
           <div class="item-name">마릴린<br>프릴 투피스</div>
+          <div class="item-qty">
+            <button class="iq-btn" onclick="iqChange(event,this,-1)">−</button>
+            <input class="iq-input" type="number" value="1" min="1" max="99"
+                   onfocus="this.select()" oninput="iqInput(this)" onclick="event.stopPropagation()">
+            <button class="iq-btn" onclick="iqChange(event,this,1)">+</button>
+          </div>
         </div>
         <div class="item-card" data-id="6" onclick="toggleItem(this)">
           <div class="check">✓</div>
           <span class="item-emoji">👗</span>
           <div class="item-num">No.6</div>
           <div class="item-name">빈센트<br>니트 원피스</div>
+          <div class="item-qty">
+            <button class="iq-btn" onclick="iqChange(event,this,-1)">−</button>
+            <input class="iq-input" type="number" value="1" min="1" max="99"
+                   onfocus="this.select()" oninput="iqInput(this)" onclick="event.stopPropagation()">
+            <button class="iq-btn" onclick="iqChange(event,this,1)">+</button>
+          </div>
         </div>
       </div>
-      <div class="multi-tip">복수 선택 가능</div>
+      <div class="multi-tip">아이템 선택 후 수량 조절 가능 · 복수 선택 가능</div>
       <div class="err-msg" id="errItem">⚠ 아이템을 1개 이상 선택해 주세요</div>
 
       <hr class="divider">
 
-      <!-- 수량 -->
+      <!-- STEP 2 참여자 정보 -->
       <div class="section-label">STEP 2</div>
-      <div class="section-title"><span class="icon">🔢</span> 수량</div>
-      <div class="qty-row">
-        <button class="qty-btn" onclick="changeQty(-1)">−</button>
-        <input class="qty-input" type="number" id="qtyVal" value="1" min="1" max="999"
-               oninput="syncQty(this)" onfocus="this.select()">
-        <button class="qty-btn" onclick="changeQty(1)">+</button>
-        <span style="font-size:13px;color:var(--muted);font-weight:600;">개</span>
-      </div>
-
-      <hr class="divider">
-
-      <!-- 개인 정보 -->
-      <div class="section-label">STEP 3</div>
-      <div class="section-title"><span class="icon">📋</span> 참여자 정보</div>
+      <div class="section-title">📋 참여자 정보</div>
 
       <div class="field-group">
+
         <div class="field">
-          <label><span class="licon">👤</span> 이름</label>
-          <input type="text" id="inputName" placeholder="이름을 입력해 주세요" maxlength="20"
-                 oninput="clearErr('errName', this)">
+          <label>🌐 7v.co.kr 회원 아이디</label>
+          <input type="text" id="inputId" placeholder="사이트 가입 아이디 입력"
+                 maxlength="20" oninput="validateId(this)" autocomplete="off">
+          <div class="field-hint" id="idHint">소문자 영문으로 시작, 영문+숫자 조합 (특수문자·대문자·공백 불가)</div>
+          <div class="err-msg" id="errId">⚠ 올바른 아이디를 입력해 주세요</div>
+        </div>
+
+        <div class="field">
+          <label>👤 이름</label>
+          <input type="text" id="inputName" placeholder="이름을 입력해 주세요"
+                 maxlength="20" oninput="clearErr('errName',this)">
           <div class="err-msg" id="errName">⚠ 이름을 입력해 주세요</div>
         </div>
 
         <div class="field">
-          <label><span class="licon">📱</span> 연락처</label>
-          <input type="tel" id="inputPhone" placeholder="010-0000-0000" maxlength="13"
-                 oninput="formatPhone(this); clearErr('errPhone', this)">
+          <label>📱 연락처</label>
+          <input type="tel" id="inputPhone" placeholder="010-0000-0000"
+                 maxlength="13" oninput="formatPhone(this);clearErr('errPhone',this)">
           <div class="err-msg" id="errPhone">⚠ 연락처를 입력해 주세요</div>
         </div>
 
         <div class="field">
-          <label><span class="licon">📸</span> 인스타그램 아이디</label>
+          <label>📸 인스타그램 아이디</label>
           <div class="insta-prefix">
-            <input type="text" id="inputInsta" placeholder="instagram_id" maxlength="30"
-                   oninput="cleanInsta(this); clearErr('errInsta', this)">
+            <input type="text" id="inputInsta" placeholder="instagram_id"
+                   maxlength="30" oninput="cleanInsta(this);clearErr('errInsta',this)">
           </div>
           <div class="err-msg" id="errInsta">⚠ 인스타그램 아이디를 입력해 주세요</div>
         </div>
+
       </div>
 
-      <!-- 제출 버튼 -->
       <button class="submit-btn" id="submitBtn" onclick="submitForm()">
         🌊 공구 참여하기
       </button>
@@ -513,35 +266,34 @@ body {
     <div class="success-screen" id="successScreen">
       <span class="success-emoji">🎉</span>
       <h2>참여 완료!</h2>
-      <p>공구 참여 신청이 접수되었어요.<br>인스타그램 DM으로 안내드릴게요 ☀️</p>
+      <p>공구 참여 신청이 접수되었어요.<br>문자로 안내드릴게요 ☀️</p>
       <div class="success-summary" id="summaryBox"></div>
     </div>
-
   </div>
 
   <div class="footer">7일간의 휴가 ☀️ 7v.co.kr</div>
 </div>
 
 <script>
-/* ── 상태 ── */
 const selectedItems = new Set();
-let qty = 1;
 
 const ITEMS = {
-  1: '🤿 스노클 세트',
-  2: '🏖️ 비치 타월',
-  3: '👟 아쿠아슈즈',
-  4: '✈️ 비행기 거치대 3종 세트',
-  5: '👙 마릴린 프릴 투피스',
-  6: '👗 빈센트 니트 원피스',
+  1:'🤿 스노클 세트',
+  2:'🏖️ 비치 타월',
+  3:'👟 아쿠아슈즈',
+  4:'✈️ 비행기 거치대 3종 세트',
+  5:'👙 마릴린 프릴 투피스',
+  6:'👗 빈센트 니트 원피스',
 };
 
-/* ── 아이템 토글 ── */
+// ── 아이템 토글 ──
 function toggleItem(el) {
   const id = el.dataset.id;
   if (selectedItems.has(id)) {
     selectedItems.delete(id);
     el.classList.remove('selected');
+    // 수량 초기화
+    el.querySelector('.iq-input').value = 1;
   } else {
     selectedItems.add(id);
     el.classList.add('selected');
@@ -556,54 +308,56 @@ function toggleItem(el) {
   clearErr('errItem');
 }
 
-/* ── 수량 ── */
-function changeQty(delta) {
-  const input = document.getElementById('qtyVal');
-  qty = Math.max(1, Math.min(999, (parseInt(input.value) || 1) + delta));
-  input.value = qty;
+// ── 아이템별 수량 ──
+function iqChange(e, btn, delta) {
+  e.stopPropagation();
+  const input = btn.parentElement.querySelector('.iq-input');
+  const v = Math.max(1, Math.min(99, (parseInt(input.value) || 1) + delta));
+  input.value = v;
 }
-function syncQty(input) {
+function iqInput(input) {
   const v = parseInt(input.value);
-  qty = isNaN(v) || v < 1 ? 1 : Math.min(999, v);
-  if (input.value !== '' && v < 1) input.value = 1;
+  if (isNaN(v) || v < 1) input.value = 1;
+  if (v > 99) input.value = 99;
 }
 
-/* ── 전화번호 자동 포맷 ── */
+// ── 아이디 유효성 (실시간) ──
+function validateId(input) {
+  const v = input.value;
+  clearErr('errId');
+  input.classList.remove('id-valid','id-invalid','error');
+  if (!v) {
+    document.getElementById('idHint').className = 'field-hint';
+    return;
+  }
+  // 규칙: 소문자 영문 시작, 영문+숫자만, 길이 2~20
+  const ok = /^[a-z][a-z0-9]{1,19}$/.test(v);
+  if (ok) {
+    input.classList.add('id-valid');
+    document.getElementById('idHint').className = 'field-hint';
+  } else {
+    input.classList.add('id-invalid');
+    document.getElementById('idHint').className = 'field-hint error-hint';
+  }
+}
+
+// ── 전화번호 포맷 ──
 function formatPhone(input) {
-  let v = input.value.replace(/\D/g, '');
+  let v = input.value.replace(/\D/g,'');
   if (v.length <= 3) input.value = v;
-  else if (v.length <= 7) input.value = v.slice(0,3) + '-' + v.slice(3);
-  else input.value = v.slice(0,3) + '-' + v.slice(3,7) + '-' + v.slice(7,11);
+  else if (v.length <= 7) input.value = v.slice(0,3)+'-'+v.slice(3);
+  else input.value = v.slice(0,3)+'-'+v.slice(3,7)+'-'+v.slice(7,11);
 }
 
-/* ── 인스타 @ 제거 ── */
+// ── 인스타 @ 제거 ──
 function cleanInsta(input) {
-  input.value = input.value.replace(/^@+/, '').replace(/\s/g, '');
+  input.value = input.value.replace(/^@+/,'').replace(/\s/g,'');
 }
 
-/* ── 에러 초기화 ── */
+// ── 에러 초기화 ──
 function clearErr(id, input) {
   document.getElementById(id).classList.remove('show');
   if (input) input.classList.remove('error');
-}
-
-/* ── 유효성 검사 ── */
-function validate() {
-  let ok = true;
-  if (selectedItems.size === 0) {
-    document.getElementById('errItem').classList.add('show');
-    document.getElementById('itemScroll').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    ok = false;
-  }
-  const name  = document.getElementById('inputName').value.trim();
-  const phone = document.getElementById('inputPhone').value.trim();
-  const insta = document.getElementById('inputInsta').value.trim();
-  if (!name)  { showErr('errName',  'inputName');  ok = false; }
-  if (!phone || phone.replace(/\D/g,'').length < 10) {
-    showErr('errPhone', 'inputPhone'); ok = false;
-  }
-  if (!insta) { showErr('errInsta', 'inputInsta'); ok = false; }
-  return ok;
 }
 function showErr(errId, inputId) {
   document.getElementById(errId).classList.add('show');
@@ -612,44 +366,66 @@ function showErr(errId, inputId) {
   el.focus();
 }
 
-/* ════════════════════════════════════════════════
-   ★ Apps Script 배포 후 아래 URL을 교체하세요 ★
-   ================================================ */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxs-HQApk8buv_xsFM5uUQdwMXHBUaXKasj3ITDFINLfGJo06BW8VvX3xW3Qp2FNSBt/exec';
-/* ════════════════════════════════════════════════ */
+// ── 유효성 검사 ──
+function validate() {
+  let ok = true;
+  if (selectedItems.size === 0) {
+    document.getElementById('errItem').classList.add('show');
+    document.getElementById('itemScroll').scrollIntoView({behavior:'smooth',block:'center'});
+    ok = false;
+  }
+  const siteId = document.getElementById('inputId').value.trim();
+  const name   = document.getElementById('inputName').value.trim();
+  const phone  = document.getElementById('inputPhone').value.trim();
+  const insta  = document.getElementById('inputInsta').value.trim();
 
-/* ── 제출 ── */
+  if (!siteId || !/^[a-z][a-z0-9]{1,19}$/.test(siteId)) {
+    showErr('errId','inputId'); ok = false;
+  }
+  if (!name)  { showErr('errName','inputName');  ok = false; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) {
+    showErr('errPhone','inputPhone'); ok = false;
+  }
+  if (!insta) { showErr('errInsta','inputInsta'); ok = false; }
+  return ok;
+}
+
+// ── 제출 ──
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxs-HQApk8buv_xsFM5uUQdwMXHBUaXKasj3ITDFINLfGJo06BW8VvX3xW3Qp2FNSBt/exec';
+
 async function submitForm() {
   if (!validate()) return;
 
-  const name  = document.getElementById('inputName').value.trim();
-  const phone = document.getElementById('inputPhone').value.trim();
-  const insta = document.getElementById('inputInsta').value.trim();
-  const items = [...selectedItems].sort().map(id => ITEMS[id]).join(', ');
-  const qtyVal = document.getElementById('qtyVal').value || qty;
+  const siteId = document.getElementById('inputId').value.trim();
+  const name   = document.getElementById('inputName').value.trim();
+  const phone  = document.getElementById('inputPhone').value.trim();
+  const insta  = document.getElementById('inputInsta').value.trim();
+
+  // 아이템별 수량 취합
+  const itemList = [...selectedItems].sort().map(id => {
+    const card  = document.querySelector(`.item-card[data-id="${id}"]`);
+    const qty   = card.querySelector('.iq-input').value || 1;
+    return `${ITEMS[id]} x${qty}`;
+  }).join(' / ');
 
   const btn = document.getElementById('submitBtn');
   btn.disabled = true;
   btn.innerHTML = '⏳ 제출 중...';
 
-  // URLSearchParams 방식 — no-cors + form 전송으로 Apps Script에 안정적으로 전달
   const params = new URLSearchParams({
-    name,
-    phone,
+    siteId, name, phone,
     insta: '@' + insta,
-    items,
-    qty: qtyVal
+    items: itemList,
   });
 
   try {
     await fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
       body: params.toString()
     });
-    showSuccess(name, phone, insta, items, qtyVal);
-  } catch (err) {
+    showSuccess(siteId, name, phone, insta, itemList);
+  } catch(err) {
     console.error(err);
     btn.disabled = false;
     btn.innerHTML = '🌊 공구 참여하기';
@@ -657,20 +433,18 @@ async function submitForm() {
   }
 }
 
-function showSuccess(name, phone, insta, items, qtyVal) {
+function showSuccess(siteId, name, phone, insta, itemList) {
   document.getElementById('mainForm').style.display = 'none';
-  const success = document.getElementById('successScreen');
-  success.classList.add('show');
+  document.getElementById('successScreen').classList.add('show');
   document.getElementById('summaryBox').innerHTML = `
-    <strong>아이템</strong>  ${items}<br>
-    <strong>수 량</strong>    ${qtyVal}개<br>
+    <strong>아이디</strong>  ${siteId}<br>
+    <strong>아이템</strong>  ${itemList}<br>
     <strong>이 름</strong>    ${name}<br>
     <strong>연락처</strong>  ${phone}<br>
     <strong>인스타</strong>  @${insta}
   `;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
-
 </body>
 </html>
