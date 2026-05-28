@@ -25,12 +25,27 @@ body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(160deg,#CA
 .hero-sub{margin-top:10px;font-size:14px;color:rgba(255,255,255,.78);position:relative;line-height:1.7;}
 .wave{position:absolute;bottom:-2px;left:0;width:100%;height:48px;}
 
-/* 안내사항 배너 */
-.notice-banner{background:rgba(255,255,255,0.95);border-radius:16px;padding:20px 22px;margin:16px 0 0;border-left:4px solid var(--ocean);box-shadow:0 4px 16px rgba(0,119,182,0.1);}
-.notice-title{font-size:13px;font-weight:800;color:var(--ocean);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
-.notice-list{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.notice-list li{font-size:12.5px;color:var(--text);line-height:1.6;display:flex;gap:8px;align-items:flex-start;}
+/* 공지사항 배너 */
+.notice-banner{background:#fff;border-radius:20px;margin:16px 0 0;overflow:hidden;box-shadow:0 4px 20px rgba(0,119,182,0.13);border:1.5px solid rgba(0,180,216,0.2);}
+.notice-header{background:linear-gradient(135deg,#023E5C,#0077B6);padding:14px 22px;display:flex;align-items:center;gap:10px;}
+.notice-header-title{font-size:14px;font-weight:800;color:#fff;letter-spacing:0.3px;}
+.notice-header-badge{background:var(--sun);color:#7D5C00;font-size:10px;font-weight:800;padding:2px 8px;border-radius:20px;margin-left:4px;}
+.notice-body{padding:18px 22px;display:flex;flex-direction:column;gap:14px;}
+.notice-greeting{font-size:13.5px;color:var(--dark);line-height:1.7;font-weight:500;}
+.notice-greeting strong{color:var(--ocean);font-weight:800;}
+.notice-links{display:flex;flex-direction:column;gap:8px;}
+.notice-link-item{display:flex;align-items:center;gap:10px;background:linear-gradient(145deg,#F0FAFF,#E8F5FF);border-radius:12px;padding:11px 14px;border:1.5px solid rgba(0,180,216,0.2);text-decoration:none;transition:all .2s;}
+.notice-link-item:hover{transform:translateX(3px);box-shadow:0 4px 12px rgba(0,119,182,0.15);}
+.notice-link-icon{font-size:18px;flex-shrink:0;}
+.notice-link-text{display:flex;flex-direction:column;}
+.notice-link-label{font-size:11px;color:var(--muted);font-weight:700;}
+.notice-link-url{font-size:13px;color:var(--ocean);font-weight:700;text-decoration:underline;}
+.notice-divider{border:none;border-top:1.5px dashed #D6EEF8;margin:2px 0;}
+.notice-section-title{font-size:12px;font-weight:800;color:var(--ocean);margin-bottom:8px;display:flex;align-items:center;gap:5px;}
+.notice-list{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.notice-list li{font-size:12.5px;color:var(--text);line-height:1.65;display:flex;gap:8px;align-items:flex-start;}
 .notice-list li::before{content:'•';color:var(--ocean);font-weight:900;flex-shrink:0;margin-top:1px;}
+.notice-list li strong{color:var(--dark);font-weight:700;}
 .notice-list a{color:var(--ocean);font-weight:700;text-decoration:underline;}
 
 /* 컨테이너 */
@@ -118,15 +133,49 @@ body{font-family:'Noto Sans KR',sans-serif;background:linear-gradient(160deg,#CA
 
 <div class="container">
 
-  <!-- 안내사항 -->
+  <!-- 공지사항 -->
   <div class="notice-banner">
-    <div class="notice-title">📢 공구 참여 안내사항</div>
-    <ul class="notice-list">
-      <li>대문자 / 공백 / 특수문자가 포함되었거나, 숫자로 시작 또는 숫자로만 이루어진 아이디는 사용할 수 없습니다.</li>
-      <li>해당 공구 이벤트는 샘플이 제공되지 않습니다.</li>
-      <li>사이트 <a href="http://7v.co.kr" target="_blank">7v.co.kr</a> 가입 후 신청 완료 시, 일괄 <strong>30% 할인</strong> 적용됩니다.</li>
-      <li>각 참여자에게 문자 발송 후 확인되면, 할인된 금액으로 주문하실 수 있습니다.</li>
-    </ul>
+    <div class="notice-header">
+      <span style="font-size:18px;">📢</span>
+      <span class="notice-header-title">7일간의 휴가 공구 안내</span>
+      <span class="notice-header-badge">NOTICE</span>
+    </div>
+    <div class="notice-body">
+
+      <div class="notice-greeting">
+        안녕하세요, <strong>7일간의 휴가</strong>입니다. 🙂<br>
+        공구 문의 주셔서 감사드립니다.<br>
+        공식몰 가입 후 아래 신청 폼을 작성해 주세요.
+      </div>
+
+      <div class="notice-links">
+        <a class="notice-link-item" href="https://www.7v.co.kr/" target="_blank">
+          <span class="notice-link-icon">🌐</span>
+          <div class="notice-link-text">
+            <span class="notice-link-label">공식몰 가입 후 참여해 주세요</span>
+            <span class="notice-link-url">www.7v.co.kr</span>
+          </div>
+          <span style="margin-left:auto;font-size:14px;color:var(--muted);">›</span>
+        </a>
+      </div>
+
+      <hr class="notice-divider">
+
+      <div>
+        <div class="notice-section-title">📋 공구 진행 방식 안내</div>
+        <ul class="notice-list">
+          <li><strong>기간 및 조건:</strong> 공구 기간 및 판매 금액은 자율적으로 진행하시면 됩니다.</li>
+          <li><strong>샘플 구매:</strong> 최저가 구성을 위한 노마진 기획으로, 샘플 무상 제공은 어려운 점 양해 부탁드립니다. 사전 테스트용 제품은 <strong>30% 할인된 금액</strong>으로 구매 가능합니다.</li>
+          <li><strong>배송 및 정산:</strong> 공구 마감 후 '주문 리스트'를 전달해 주시면 일괄 출고됩니다.<br>
+          <span style="font-size:11.5px;color:var(--muted);">※ 주문 리스트 양식은 7일간의 휴가 게시글에서 다운로드 가능</span></li>
+        </ul>
+      </div>
+
+      <div style="background:#F0FAFF;border-radius:10px;padding:10px 14px;font-size:12px;color:var(--muted);text-align:center;border:1px solid rgba(0,180,216,0.2);">
+        추가 문의 사항은 언제든 남겨주세요. 감사합니다! 🙏
+      </div>
+
+    </div>
   </div>
 
   <div class="card" style="margin-top:16px;">
